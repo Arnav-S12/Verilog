@@ -1,8 +1,8 @@
-//moore sequence detector - 1001
+////moore sequence detector - 1001
 
 
 module moore1(input clk,reset,ip, output reg op);
-reg [1:0] state;
+reg [2:0] state;
 
 always@(posedge clk or posedge reset) begin
 
@@ -13,14 +13,16 @@ else begin
 
  case({state,ip})
  
-  3'b000: begin state<=2'b00; op<=0; end
-  3'b001: begin state<=2'b01; op<=0; end
-  3'b010: begin state<=2'b10; op<=0; end
-  3'b011: begin state<=2'b01; op<=0; end
-  3'b100: begin state<=2'b11; op<=0; end
-  3'b101: begin state<=2'b01; op<=0; end
-  3'b110: begin state<=2'b00; op<=0; end
-  3'b111: begin state<=2'b01; op<=1; end
+  4'b0000: begin state<=3'b000; op<=0; end   //state = 0; ip = 0
+  4'b0001: begin state<=3'b001; op<=0; end   //state = 0; ip = 1
+  4'b0010: begin state<=3'b010; op<=0; end   //state = 1; ip = 0
+  4'b0011: begin state<=3'b001; op<=0; end   //state = 1; ip = 1
+  4'b0100: begin state<=3'b011; op<=0; end   //state = 2; ip = 0
+  4'b0101: begin state<=3'b001; op<=0; end   //state = 2; ip = 1
+  4'b0110: begin state<=3'b000; op<=0; end   //state = 3; ip = 0
+  4'b0111: begin state<=3'b100; op<=1; end   //state = 3; ip = 1
+  4'b1000: begin state<=3'b010; op<=0; end   //state = 4; ip = 0
+  4'b1001: begin state<=3'b001; op<=0; end   //state = 4; ip = 1
   
   endcase
   end
