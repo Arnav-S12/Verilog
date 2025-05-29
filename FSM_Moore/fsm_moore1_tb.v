@@ -4,7 +4,7 @@
 module moore1_tb;
 reg clk,reset,ip;
 wire op;
-//wire [1:0] state;
+//wire [2:0] state;
 
 moore1 dut(.clk(clk),.reset(reset),.ip(ip),.op(op));
 
@@ -23,7 +23,7 @@ ip=0; #10;
 ip=0; #10;
 ip=1; #10;
 ip=0; #10;
-ip=1; #10;
+ip=0; #10;
 ip=1; #10;
 ip=1; #10;
 ip=0; #10;
@@ -32,8 +32,8 @@ ip=0; #10;
 ip=1; #10;
 ip=0; #10;
 ip=0; #10;
-ip=1; #10;
 ip=0; #10;
+ip=1; #10;
 ip=1; #10;
 
 
